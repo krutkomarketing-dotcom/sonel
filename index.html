@@ -47,7 +47,7 @@ section{scroll-margin-top:72px}
 .hdr .box{height:68px;display:flex;align-items:center;gap:24px;padding:0 20px}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-size:26px;letter-spacing:-.01em;line-height:1}
 .logo svg{width:30px;height:30px;flex:none}
-.logo .wm b{font-weight:700;color:#fff}.logo .wm span{font-weight:400;color:var(--w3)}
+.logo .wm{font-weight:500;color:#fff;letter-spacing:-.005em}
 .hdr .nav{display:none;gap:22px;font-size:15px;margin-left:12px}
 .hdr .nav a{text-decoration:none;color:var(--w2)}
 .hdr .nav a:hover{color:#fff}
@@ -94,7 +94,10 @@ section{scroll-margin-top:72px}
 .tile{position:relative;min-height:0;padding:30px 24px;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
 .tile.v{background:var(--vio)}.tile.t{background:var(--tea)}
 .tile.pic{background:radial-gradient(120% 120% at 30% 20%,var(--pic2),var(--pic));display:none}
-.tile.pic::before{content:"";position:absolute;inset:0;background:var(--img,none) center/cover;opacity:.55}
+.sv.pic{display:flex}
+.tile.pic::before{content:"";position:absolute;inset:0;background:var(--img,none) center/cover;opacity:.55;pointer-events:none}
+.tile>*{position:relative;z-index:1}
+.tile>.wm,.tile>.chev{position:absolute}
 .tile .lnk{font-size:clamp(1.3rem,2vw,1.75rem);line-height:1.25;color:#fff;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:5px;text-decoration-color:rgba(255,255,255,.6)}
 .tile .ds{margin-top:12px;color:rgba(255,255,255,.9);font-size:16px}
 .tile ul{list-style:none;margin-top:14px;display:grid;gap:6px;font-size:16px;color:rgba(255,255,255,.92)}
@@ -121,6 +124,87 @@ section{scroll-margin-top:72px}
   .t4 .tile:not(.pic):nth-child(odd of .tile:not(.pic)){background:var(--tea)}
   .t4 .tile:not(.pic):nth-child(even of .tile:not(.pic)){background:var(--vio)}
 }
+
+/* bento первого экрана */
+.bento{display:grid}
+.bento .tile{padding:28px 22px}
+.b-main{display:flex!important;flex-direction:column;justify-content:center;padding:36px 20px 40px!important}
+.b-main h1,.b-main .h1{font-size:clamp(2.1rem,4.4vw,3.6rem);font-weight:300;line-height:1.1;max-width:15ch}
+.b-main .lead{font-size:clamp(1.05rem,1.4vw,1.18rem);color:var(--w2);margin-top:18px;max-width:40ch}
+.seg{display:inline-flex;flex-wrap:wrap;gap:4px;background:rgba(255,255,255,.07);border-radius:var(--r);padding:4px;margin-bottom:26px;align-self:flex-start}
+.seg button{border:0;background:none;color:var(--w2);font:500 14.5px var(--f);padding:9px 16px;border-radius:var(--r);cursor:pointer}
+.seg button[aria-selected="true"]{background:#fff;color:var(--bg)}
+.b-a,.b-b,.b-c,.b-d,.b-e{display:none!important}
+.big{font-size:clamp(2.6rem,4.4vw,4rem);font-weight:300;line-height:1}
+.big.sm{font-size:clamp(1.7rem,2.4vw,2.3rem)}
+.face{display:flex;flex-direction:column;justify-content:center;height:100%}
+.face[hidden]{display:none}
+.face .ds{margin-top:10px}
+.big-m{margin-top:16px}
+.big-m a{width:54px;height:54px}.big-m a svg{width:24px;height:24px}
+@media(min-width:1024px){
+  .bento{grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(3,minmax(170px,auto))}
+  .b-main{grid-column:1/3;grid-row:1/4;padding:56px 52px!important}
+  .b-a,.b-b,.b-c,.b-d,.b-e{display:flex!important}
+  .b-a{grid-column:3;grid-row:1/3}.b-b{grid-column:4;grid-row:1}.b-c{grid-column:4;grid-row:2}
+  .b-d{grid-column:3;grid-row:3}.b-e{grid-column:4;grid-row:3}
+  .b-a .face,.b-d .face{justify-content:flex-end}
+  .b-b .face,.b-c .face{align-items:center}
+}
+/* подсветка за курсором на тёмных плитках */
+.sp{--mx:50%;--my:50%}
+.sp::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(420px circle at var(--mx) var(--my),rgba(255,255,255,.08),transparent 60%)}
+html.mo .sp:hover::after{opacity:1}
+/* услуги */
+.sv{text-decoration:none;color:#fff;position:relative;justify-content:flex-start!important;text-align:left!important}
+.sv .wm{position:absolute;right:-30px;bottom:-30px;width:220px;height:220px;color:rgba(255,255,255,.1);stroke-width:1.2}
+.sv .go{margin-top:18px;font-weight:500;display:inline-flex;gap:8px;border-bottom:1.5px solid rgba(255,255,255,.6);align-self:flex-start;padding-bottom:2px}
+.sv .lnk{text-decoration:none}
+@media(min-width:1024px){.svc .tile{min-height:380px;padding:46px 44px;justify-content:flex-end!important}.svc .tile .mini{display:none}}
+/* раскрывающиеся панели */
+.panels{display:grid}
+.pn{position:relative;padding:26px 22px;display:flex;gap:18px;align-items:flex-start;outline:none}
+.pn.t{background:var(--tea)}.pn.v{background:var(--vio)}
+.pn .ring{width:52px;height:52px;border-width:2px;margin:0;flex:none}.pn .ring svg{width:24px;height:24px}
+.pn h3{font-size:1.3rem;font-weight:500;line-height:1.25}
+.pn p{margin-top:8px;color:rgba(255,255,255,.92);font-size:16px}
+@media(min-width:1024px){
+  .panels{display:flex;height:440px}
+  .pn{flex:1;min-width:0;flex-direction:column;justify-content:space-between;padding:30px 20px;background:var(--pic)!important;cursor:pointer;transition:flex-grow .6s cubic-bezier(.2,.8,.2,1),background-color .4s;border-right:1px solid rgba(255,255,255,.06);overflow:hidden}
+  .pn .ring{width:78px;height:78px;border-width:3px}.pn .ring svg{width:34px;height:34px}
+  .pn .pt{width:100%}
+  .pn h3{font-size:1.08rem;overflow-wrap:normal;hyphens:auto;-webkit-hyphens:auto}
+  .pn p{max-height:0;opacity:0;overflow:hidden;transition:opacity .35s,max-height .5s}
+  .pn.open{flex-grow:2.2;padding:30px 30px}
+  .pn.open.t{background:var(--tea)!important}.pn.open.v{background:var(--vio)!important}
+  .pn.open h3{font-size:1.7rem;font-weight:400;max-width:16ch}
+  .pn.open p{max-height:200px;opacity:1;transition-delay:.25s}
+}
+/* руководители */
+.leads{display:grid}
+.ld{display:grid}
+.ld .ph{display:none}
+@media(min-width:900px){.leads{grid-template-columns:1fr 1fr}.ld{grid-template-columns:minmax(0,.85fr) minmax(0,1fr)}.ld .ph{display:flex;align-items:center;justify-content:center;min-height:340px}.ld .ph::before{content:"";position:absolute;inset:0;background:var(--img,none) center/cover;pointer-events:none}}
+/* магнит на кнопках */
+html.mo .mag{transition:transform .35s cubic-bezier(.2,.8,.2,1),background-color .2s}
+/* переворот граней в bento */
+html.mo .fl .face:not([hidden]){animation:flip .7s cubic-bezier(.2,.8,.2,1) both}
+html.mo .bento .fl:nth-child(3) .face{animation-delay:.06s}html.mo .bento .fl:nth-child(4) .face{animation-delay:.12s}html.mo .bento .fl:nth-child(5) .face{animation-delay:.18s}
+html.mo .bento .segp:not([hidden])>*{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+html.mo .bento .segp:not([hidden])>*:nth-child(2){animation-delay:.07s}
+html.mo .bento .segp:not([hidden])>*:nth-child(3){animation-delay:.14s}
+html.mo .bento{perspective:1600px}
+html.mo .bento>.tile{animation:tin .9s cubic-bezier(.2,.8,.2,1) both}
+html.mo .bento>.tile:nth-child(2){animation-delay:.1s}html.mo .bento>.tile:nth-child(3){animation-delay:.18s}html.mo .bento>.tile:nth-child(4){animation-delay:.26s}html.mo .bento>.tile:nth-child(5){animation-delay:.34s}html.mo .bento>.tile:nth-child(6){animation-delay:.42s}
+@keyframes tin{from{opacity:0;transform:rotateX(-70deg);transform-origin:50% 0}to{opacity:1;transform:none}}
+html.mo .panels.rv .pn{opacity:0;transform:translateY(30px);transition:flex-grow .6s cubic-bezier(.2,.8,.2,1),background-color .4s,opacity .6s ease-out,transform .7s cubic-bezier(.2,.8,.2,1);transition-delay:0s,0s,calc(var(--i)*80ms),calc(var(--i)*80ms)}
+html.mo .panels.rv.in .pn{opacity:1;transform:none}
+html.mo .sv .wm{transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+html.mo .sv:hover .wm{transform:rotate(-12deg) scale(1.08)}
+html.mo .sv:hover{filter:brightness(1.06)}
+html.mo .leads.rv .ld{opacity:0;transform:translateY(26px);transition:opacity .6s,transform .7s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--i)*120ms)}
+html.mo .leads.rv.in .ld{opacity:1;transform:none}
+
 /* акция */
 .promo{background:var(--red)}
 .promo .box{display:flex;flex-wrap:wrap;gap:14px 30px;align-items:center;justify-content:space-between;padding:20px}
@@ -333,7 +417,7 @@ html.mo .tile.v:hover,html.mo .tile.t:hover{filter:brightness(1.07)}
 
 <header class="hdr">
   <div class="box">
-    <a class="logo" href="#top" aria-label="Сонель"><svg><use href="#logo"/></svg><span class="wm"><b>Со</b><span>нель</span></span></a>
+    <a class="logo" href="#top" aria-label="Сонель"><svg><use href="#logo"/></svg><span class="wm">Сонель</span></a>
     <nav class="nav" aria-label="Разделы"><a href="#uslugi">Услуги</a><a href="#ceny">Цены</a><a href="#kak">Правила</a><a href="#kontakty">Офис</a></nav>
     <div class="r">
       <!-- TODO: подтвердить у клиента WhatsApp на этом номере -->
@@ -347,41 +431,29 @@ html.mo .tile.v:hover,html.mo .tile.t:hover{filter:brightness(1.07)}
 <main id="top">
 
 <section class="hero" aria-label="Главное">
-  <div class="box slides" id="slides">
-    <div class="slide" data-s="0">
-      <div class="s-txt">
-        <span class="s-tag">Если бизнес уже работает</span>
+  <div class="box bento" id="bento">
+    <div class="b-main tile pic sp">
+      <div class="seg" role="tablist" aria-label="Ваша ситуация">
+        <button role="tab" aria-selected="true" data-seg="0">Бизнес уже работает</button>
+        <button role="tab" aria-selected="false" data-seg="1">Только регистрируетесь</button>
+      </div>
+      <div class="segp" data-p="0">
         <h1>Бухгалтерия для ООО и&nbsp;ИП в&nbsp;Минске</h1>
         <p class="lead">Ведём учёт с 2011 года. Штрафы, начисленные из-за нашей ошибки, возмещаем по договору.</p>
-        <div class="s-act"><button class="btn btn-r" data-quiz>Узнать стоимость</button><a class="btn btn-o" href="tel:+375291402025">Позвонить</a></div>
+        <div class="s-act"><button class="btn btn-r mag" data-quiz>Узнать стоимость</button><a class="btn btn-o" href="tel:+375291402025">Позвонить</a></div>
       </div>
-      <div class="mosaic" aria-hidden="true">
-        <div class="tile v c"><span class="lnk" style="text-decoration:none">С&nbsp;2011 года</span><span class="ds">ведём учёт бизнеса в Минске</span></div>
-        <div class="tile pic"><span class="ring"><svg><use href="#i-calc"/></svg></span></div>
-        <div class="tile pic"><span class="ring"><svg><use href="#i-shield"/></svg></span></div>
-        <div class="tile t c"><span class="lnk" style="text-decoration:none">Белгосстрах</span><span class="ds">страхует нашу ответственность</span></div>
-      </div>
-    </div>
-    <div class="slide" data-s="1" hidden>
-      <div class="s-txt">
-        <span class="s-tag">Если только регистрируетесь</span>
+      <div class="segp" data-p="1" hidden>
         <p class="h1">Откроем компанию и&nbsp;поставим учёт с&nbsp;нуля</p>
-        <!-- TODO: подтвердить у клиента акцию «регистрация бесплатно при договоре» -->
+        <!-- TODO: подтвердить у клиента акцию «регистрация без оплаты при договоре» -->
         <p class="lead">Зарегистрируем без оплаты, если дальше учёт ведём мы. Систему налогообложения подберём ещё до первой сделки.</p>
-        <div class="s-act"><button class="btn btn-r" data-quiz data-preset="new">Зарегистрировать</button><a class="btn btn-o" href="tel:+375291402025">Позвонить</a></div>
-      </div>
-      <div class="mosaic" aria-hidden="true">
-        <div class="tile pic"><span class="ring"><svg><use href="#i-doc"/></svg></span></div>
-        <div class="tile t c"><span class="lnk" style="text-decoration:none">Регистрация</span><span class="ds">бесплатно при договоре</span></div>
-        <div class="tile v c"><span class="lnk" style="text-decoration:none">Учёт с&nbsp;первого дня</span><span class="ds">и подбор системы налогообложения</span></div>
-        <div class="tile pic"><span class="ring"><svg><use href="#i-bulb"/></svg></span></div>
+        <div class="s-act"><button class="btn btn-r mag" data-quiz data-preset="new">Зарегистрировать</button><a class="btn btn-o" href="tel:+375291402025">Позвонить</a></div>
       </div>
     </div>
-    <div class="s-nav">
-      <button class="ar" data-go="-1" aria-label="Предыдущий слайд"><svg><use href="#i-left"/></svg></button>
-      <div class="dots"><button class="dot" data-to="0" aria-current="true" aria-label="Слайд 1">1</button><button class="dot" data-to="1" aria-current="false" aria-label="Слайд 2">2</button></div>
-      <button class="ar" data-go="1" aria-label="Следующий слайд"><svg><use href="#i-right"/></svg></button>
-    </div>
+    <div class="b-a tile v fl"><div class="face" data-p="0"><span class="big">2011</span><span class="ds">ведём учёт бизнеса в Минске с этого года</span></div><div class="face" data-p="1" hidden><span class="big">0&nbsp;р.</span><span class="ds">за регистрацию при договоре на обслуживание</span></div></div>
+    <div class="b-b tile pic sp fl"><div class="face" data-p="0"><span class="ring"><svg><use href="#i-calc"/></svg></span></div><div class="face" data-p="1" hidden><span class="ring"><svg><use href="#i-doc"/></svg></span></div></div>
+    <div class="b-c tile pic sp fl"><div class="face" data-p="0"><span class="ring"><svg><use href="#i-shield"/></svg></span></div><div class="face" data-p="1" hidden><span class="ring"><svg><use href="#i-bulb"/></svg></span></div></div>
+    <div class="b-d tile t fl"><div class="face" data-p="0"><span class="big sm">Белгосстрах</span><span class="ds">страхует нашу профессиональную ответственность</span></div><div class="face" data-p="1" hidden><span class="big sm">УСН или ОСН</span><span class="ds">посчитаем на ваших цифрах до старта</span></div></div>
+    <div class="b-e tile pic sp"><span class="ds">Пишите, где удобно</span><div class="msgr big-m"><a class="tg" href="https://t.me/+375291402025" aria-label="Telegram"><svg><use href="#i-tg"/></svg></a><a class="vb" href="viber://chat?number=%2B375291402025" aria-label="Viber"><svg><use href="#i-viber"/></svg></a><a class="wa" href="https://wa.me/375291402025" aria-label="WhatsApp"><svg><use href="#i-wa"/></svg></a></div></div>
   </div>
 </section>
 
@@ -394,13 +466,10 @@ html.mo .tile.v:hover,html.mo .tile.t:hover{filter:brightness(1.07)}
 
 <section id="uslugi" class="box">
   <div class="band"><h2>Услуги</h2></div>
-  <div class="tiles t3 rv">
-    <div class="tile v c" style="--i:0"><span class="mini"><svg><use href="#i-doc"/></svg></span><a class="lnk" href="#" data-quiz>Ведём учёт целиком или по участкам</a><p class="ds">Накладные, платёжки, налоги, ЭСЧФ, зарплата и вся отчётность.</p></div>
-    <div class="tile pic" style="--i:1"><span class="ring"><svg><use href="#i-down"/></svg></span></div>
-    <div class="tile t c" style="--i:2"><span class="mini"><svg><use href="#i-chat"/></svg></span><a class="lnk" href="#" data-quiz>Главбух отвечает без доплаты</a><p class="ds">Клиенты на обслуживании задают вопросы своему бухгалтеру и руководству компании.</p></div>
-    <div class="tile pic" style="--i:3"><span class="ring"><svg><use href="#i-arrowup"/></svg></span></div>
-    <div class="tile v c" style="--i:4"><span class="mini"><svg><use href="#i-users"/></svg></span><a class="lnk" href="#" data-quiz>Отдельный кадровик для ваших сотрудников</a><p class="ds">Приём, увольнение, договоры подряда и воинский учёт. Раньше работал в военкомате.</p></div>
-    <div class="tile pic" style="--i:5"><span class="ring"><svg><use href="#i-arrowup"/></svg></span></div>
+  <div class="tiles t3 rv svc">
+    <a class="tile v sv" href="#" data-quiz style="--i:0"><svg class="wm"><use href="#i-doc"/></svg><span class="mini"><svg><use href="#i-doc"/></svg></span><span class="lnk">Ведём учёт целиком или по&nbsp;участкам</span><p class="ds">Накладные, платёжки, налоги, ЭСЧФ, зарплата и вся отчётность.</p><span class="go">Рассчитать стоимость</span></a>
+    <a class="tile pic sp sv" href="#" data-quiz style="--i:1"><svg class="wm"><use href="#i-users"/></svg><span class="mini"><svg><use href="#i-users"/></svg></span><span class="lnk">Отдельный кадровик для ваших сотрудников</span><p class="ds">Приём, увольнение, договоры подряда и воинский учёт. Раньше работал в военкомате.</p><span class="go">Рассчитать стоимость</span></a>
+    <a class="tile t sv" href="#" data-quiz style="--i:2"><svg class="wm"><use href="#i-chat"/></svg><span class="mini"><svg><use href="#i-chat"/></svg></span><span class="lnk">Главбух отвечает без доплаты</span><p class="ds">Клиенты на обслуживании задают вопросы своему бухгалтеру и руководству компании.</p><span class="go">Задать вопрос</span></a>
   </div>
 </section>
 
@@ -419,32 +488,23 @@ html.mo .tile.v:hover,html.mo .tile.t:hover{filter:brightness(1.07)}
 
 <section id="kak" class="box">
   <div class="band"><h2>Наши правила</h2></div>
-  <div class="tiles t4 rv">
-    <div class="tile pic" style="--i:0"><span class="ring"><svg><use href="#i-expand"/></svg></span><svg class="chev r"><use href="#i-right"/></svg></div>
-    <div class="tile t" style="--i:1"><span class="mini"><svg><use href="#i-expand"/></svg></span><span class="lnk">Бухгалтеру не&nbsp;нужен стол у&nbsp;вас</span><p class="ds">Компьютер, 1С и обучение специалиста на нашей стороне.</p></div>
-    <div class="tile pic" style="--i:2"><span class="ring"><svg><use href="#i-therm"/></svg></span><svg class="chev r"><use href="#i-right"/></svg></div>
-    <div class="tile v" style="--i:3"><span class="mini"><svg><use href="#i-therm"/></svg></span><span class="lnk">Учёт не&nbsp;встаёт на&nbsp;время отпусков</span><p class="ds">Если ваш бухгалтер отсутствует, его участок сразу ведёт коллега.</p></div>
-
-    <div class="tile t rt" style="--i:4"><span class="mini"><svg><use href="#i-calc"/></svg></span><span class="lnk">С&nbsp;инспекторами общаемся сами</span><p class="ds">Налоговая и ФСЗН звонят нам. Камеральные, плановые и ликвидационные проверки проходили не раз.</p></div>
-    <div class="tile pic" style="--i:5"><span class="ring"><svg><use href="#i-calc"/></svg></span><svg class="chev l"><use href="#i-right"/></svg></div>
-    <div class="tile v rt" style="--i:6"><span class="mini"><svg><use href="#i-bulb"/></svg></span><span class="lnk">Подключаем юристов и&nbsp;аудиторов</span><p class="ds">Если вопрос выходит за рамки учёта, сведём с адвокатом, аудитором, программистом 1С или банком.</p></div>
-    <div class="tile pic" style="--i:7"><span class="ring"><svg><use href="#i-bulb"/></svg></span><svg class="chev l"><use href="#i-right"/></svg></div>
-
-    <div class="tile pic" style="--i:8"><span class="ring"><svg><use href="#i-shield"/></svg></span><svg class="chev r"><use href="#i-right"/></svg></div>
-    <div class="tile v" style="--i:9"><span class="mini"><svg><use href="#i-shield"/></svg></span><span class="lnk">Штрафы по&nbsp;нашей вине возмещаем</span><p class="ds">Это прописано в договоре. Ответственность компании застрахована в Белгосстрахе.</p><!-- TODO: сумма страхового покрытия --></div>
-    <div class="tile pic" style="--i:10"><span class="ring"><svg><use href="#i-case"/></svg></span><svg class="chev r"><use href="#i-right"/></svg></div>
-    <div class="tile t" style="--i:11"><span class="mini"><svg><use href="#i-case"/></svg></span><span class="lnk">Готовим документы для&nbsp;банков</span><p class="ds">Пакеты на кредит и бизнес-планы собираем сами, по своей же отчётности.</p></div>
+  <!-- TODO: сумма страхового покрытия -->
+  <div class="panels rv">
+    <div class="pn t open" tabindex="0" style="--i:0"><span class="ring"><svg><use href="#i-expand"/></svg></span><div class="pt"><h3>Бухгалтеру не&nbsp;нужен стол у&nbsp;вас</h3><p>Компьютер, 1С и обучение специалиста на нашей стороне.</p></div></div>
+    <div class="pn v" tabindex="0" style="--i:1"><span class="ring"><svg><use href="#i-therm"/></svg></span><div class="pt"><h3>Учёт не&nbsp;встаёт на&nbsp;время отпусков</h3><p>Если ваш бухгалтер отсутствует, его участок сразу ведёт коллега.</p></div></div>
+    <div class="pn t" tabindex="0" style="--i:2"><span class="ring"><svg><use href="#i-calc"/></svg></span><div class="pt"><h3>С&nbsp;инспекторами общаемся сами</h3><p>Налоговая и ФСЗН звонят нам. Камеральные, плановые и ликвидационные проверки проходили не раз.</p></div></div>
+    <div class="pn v" tabindex="0" style="--i:3"><span class="ring"><svg><use href="#i-bulb"/></svg></span><div class="pt"><h3>Подключаем юристов и&nbsp;аудиторов</h3><p>Если вопрос выходит за рамки учёта, сведём с адвокатом, аудитором, программистом 1С или банком.</p></div></div>
+    <div class="pn t" tabindex="0" style="--i:4"><span class="ring"><svg><use href="#i-shield"/></svg></span><div class="pt"><h3>Штрафы по&nbsp;нашей вине возмещаем</h3><p>Это прописано в договоре. Ответственность компании застрахована в Белгосстрахе.</p></div></div>
+    <div class="pn v" tabindex="0" style="--i:5"><span class="ring"><svg><use href="#i-case"/></svg></span><div class="pt"><h3>Готовим документы для&nbsp;банков</h3><p>Пакеты на кредит и бизнес-планы собираем сами, по своей же отчётности.</p></div></div>
   </div>
 </section>
 
 <section id="rukovodstvo" class="box">
   <div class="band"><h2>Руководители на связи</h2></div>
-  <!-- TODO: имена, должности, личные телефоны и почта руководителей. Фото потом: style="--img:url(img/...)" на .tile.pic -->
-  <div class="tiles t4 lead4 rv">
-    <div class="tile pic" style="--i:0"><span class="ini" aria-hidden="true">ИФ</span></div>
-    <div class="tile v person" style="--i:1"><span class="nm">Имя<br>Фамилия</span><p class="role">Учредитель и руководитель</p><a href="tel:+375291402025">+375 (29) 140-20-25</a><a href="mailto:sonel.buh@gmail.com">sonel.buh@gmail.com</a></div>
-    <div class="tile pic" style="--i:2"><span class="ini" aria-hidden="true">ИФ</span></div>
-    <div class="tile t person" style="--i:3"><span class="nm">Имя<br>Фамилия</span><p class="role">Учредитель, главный бухгалтер</p><a href="tel:+375291402025">+375 (29) 140-20-25</a><a href="mailto:sonel.buh@gmail.com">sonel.buh@gmail.com</a></div>
+  <!-- TODO: имена, должности, личные телефоны и почта руководителей. Фото потом: style="--img:url(img/...)" на .ph -->
+  <div class="leads rv">
+    <div class="ld" style="--i:0"><div class="ph tile pic sp"><span class="ini" aria-hidden="true">ИФ</span></div><div class="tile v person"><span class="nm">Имя Фамилия</span><p class="role">Учредитель и руководитель</p><a href="tel:+375291402025">+375 (29) 140-20-25</a><a href="mailto:sonel.buh@gmail.com">sonel.buh@gmail.com</a></div></div>
+    <div class="ld" style="--i:1"><div class="ph tile pic sp"><span class="ini" aria-hidden="true">ИФ</span></div><div class="tile t person"><span class="nm">Имя Фамилия</span><p class="role">Учредитель, главный бухгалтер</p><a href="tel:+375291402025">+375 (29) 140-20-25</a><a href="mailto:sonel.buh@gmail.com">sonel.buh@gmail.com</a></div></div>
   </div>
 </section>
 
@@ -498,7 +558,7 @@ html.mo .tile.v:hover,html.mo .tile.t:hover{filter:brightness(1.07)}
 
 <footer class="ftr">
   <div class="box top">
-    <div><span class="logo"><svg><use href="#logo"/></svg><span class="wm"><b>Со</b><span>нель</span></span></span><div>Бухгалтерский и кадровый учёт с 2011 года</div></div>
+    <div><span class="logo"><svg><use href="#logo"/></svg><span class="wm">Сонель</span></span><div>Бухгалтерский и кадровый учёт с 2011 года</div></div>
     <div>220063, г. Минск<br>ул. Неманская, 24<br>оф. 20, 3 этаж</div>
     <div>ООО «Сонель»<br>УНП 191448957<br>на рынке с 2011 года</div>
     <div><a href="tel:+375291402025">+375 (29) 140-20-25</a><br><a href="tel:+375173603653">+375 (17) 360-36-53</a><br><a href="mailto:sonel.buh@gmail.com">sonel.buh@gmail.com</a></div>
@@ -533,14 +593,15 @@ html.mo .tile.v:hover,html.mo .tile.t:hover{filter:brightness(1.07)}
   var MO=matchMedia('(min-width:1024px) and (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference)').matches;
   if(MO)document.documentElement.classList.add('mo');
 
-  // ---- слайдер (автопрокрутка только на десктопе) ----
-  var slides=[].slice.call(document.querySelectorAll('.slide')),dots=[].slice.call(document.querySelectorAll('.dot')),mode=0,timer;
-  function show(n){mode=(n+slides.length)%slides.length;slides.forEach(function(s,i){s.hidden=i!==mode});dots.forEach(function(d,i){d.setAttribute('aria-current',i===mode)})}
-  function auto(){if(!MO)return;clearInterval(timer);timer=setInterval(function(){show(mode+1)},8000)}
-  document.querySelectorAll('[data-go]').forEach(function(b){b.addEventListener('click',function(){show(mode+ +b.dataset.go);auto()})});
-  dots.forEach(function(d){d.addEventListener('click',function(){show(+d.dataset.to);auto()})});
-  var sl=document.getElementById('slides');sl.addEventListener('mouseenter',function(){clearInterval(timer)});sl.addEventListener('mouseleave',auto);
-  auto();
+  // ---- переключатель ситуации: меняет текст и грани мозаики ----
+  var mode=0,segs=[].slice.call(document.querySelectorAll('[data-seg]'));
+  function setSeg(n){mode=n;segs.forEach(function(b){b.setAttribute('aria-selected',+b.dataset.seg===n)});document.querySelectorAll('.bento [data-p]').forEach(function(p){p.hidden=+p.dataset.p!==n})}
+  segs.forEach(function(b){b.addEventListener('click',function(){setSeg(+b.dataset.seg)})});
+
+  // ---- панели правил ----
+  var pns=[].slice.call(document.querySelectorAll('.pn'));
+  function openPn(p){pns.forEach(function(x){x.classList.toggle('open',x===p)})}
+  pns.forEach(function(p){p.addEventListener('mouseenter',function(){if(MO)openPn(p)});p.addEventListener('focus',function(){openPn(p)});p.addEventListener('click',function(){openPn(p)})});
 
   // ---- cookie ----
   var ck=document.getElementById('ckb'),v=null;
@@ -619,11 +680,12 @@ html.mo .tile.v:hover,html.mo .tile.t:hover{filter:brightness(1.07)}
   document.querySelectorAll('.tile.pic').forEach(function(t){var s=t.querySelector('.ring svg,.ini');if(!s)return;
     t.addEventListener('mousemove',function(e){var r=t.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;s.style.transform='translate('+x*14+'px,'+y*14+'px)'});
     t.addEventListener('mouseleave',function(){s.style.transform=''})});
-  // иконка с шевроном «тянется» к соседней цветной плитке при наведении на неё
-  document.querySelectorAll('.t4 .tile.v,.t4 .tile.t').forEach(function(t){
-    var p=t.previousElementSibling&&t.previousElementSibling.classList.contains('pic')&&t.previousElementSibling.querySelector('.chev.r')?t.previousElementSibling:(t.nextElementSibling&&t.nextElementSibling.querySelector('.chev.l')?t.nextElementSibling:null);
-    if(!p)return;t.addEventListener('mouseenter',function(){p.classList.add('near')});t.addEventListener('mouseleave',function(){p.classList.remove('near')});
-  });
+  // подсветка за курсором
+  document.querySelectorAll('.sp').forEach(function(t){t.addEventListener('mousemove',function(e){var r=t.getBoundingClientRect();t.style.setProperty('--mx',(e.clientX-r.left)+'px');t.style.setProperty('--my',(e.clientY-r.top)+'px')})});
+  // магнитные кнопки
+  document.querySelectorAll('.mag').forEach(function(b){b.addEventListener('mousemove',function(e){var r=b.getBoundingClientRect();b.style.transform='translate('+(e.clientX-r.left-r.width/2)*.18+'px,'+(e.clientY-r.top-r.height/2)*.3+'px)'});b.addEventListener('mouseleave',function(){b.style.transform=''})});
+  // плитки Цены и Услуги, панели, руководители
+  document.querySelectorAll('.panels.rv,.leads.rv').forEach(function(el){io.observe(el)});
 })();
 </script>
 </body>
