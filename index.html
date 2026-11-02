@@ -180,7 +180,20 @@ section{scroll-margin-top:68px}
 .fld.bad input{border-color:var(--due)}.fld.bad .err{display:block}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .cf .btn{width:100%}
-.agree,.close .cf .agree{font-size:13px;color:var(--text2)}
+.cons{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.4;color:var(--text2);cursor:pointer}
+.cons input{width:20px;height:20px;flex:none;margin-top:1px;accent-color:var(--ink)}
+.cons a{color:var(--ink)}
+.cerr{display:none;font-size:14px;color:var(--due)}
+form.nocons .cerr{display:block}
+.ckb{position:fixed;left:12px;right:12px;bottom:84px;z-index:90;background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:16px;display:none;gap:12px;box-shadow:0 10px 30px -10px rgba(20,25,58,.3);font-size:14.5px;color:var(--text2)}
+.ckb.show{display:grid}
+.ckb a{color:var(--ink)}
+.ckb .b{display:flex;gap:8px}
+.ckb .btn{height:44px;padding:0 18px;font-size:15px;flex:1}
+.ckb .btn-o{border-color:var(--line);color:var(--text);background:#fff}
+@media(min-width:1024px){.ckb{left:auto;right:24px;bottom:24px;max-width:420px}.ckb .btn{flex:none}}
+.ftr .legal{display:flex;gap:8px 22px;flex-wrap:wrap}
+.ftr .legal a{color:var(--text2)}
 .okmsg{display:none;font-family:var(--head);font-weight:600;font-size:1.2rem;padding:20px 0}
 form.sent .okmsg{display:block}form.sent .fb{display:none}
 @media(min-width:1024px){.close{padding:96px 0}.close .wrap{grid-template-columns:minmax(0,1fr) 420px;gap:90px}.cf{padding:30px}}
@@ -389,8 +402,8 @@ html.mo .pi:hover{transform:translateY(-3px)}
         <div class="hp" aria-hidden="true"><input name="website" tabindex="-1" autocomplete="off"></div>
         <div class="fld"><label for="c-n">Имя</label><input id="c-n" name="name" autocomplete="name"></div>
         <div class="fld"><label for="c-t">Телефон</label><input id="c-t" name="phone" type="tel" autocomplete="tel" placeholder="+375 29 000-00-00"><span class="err">Нужен номер, чтобы перезвонить</span></div>
-        <button class="btn btn-i" type="submit">Перезвоните мне</button>
-        <p class="agree">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</p>
+        <label class="cons"><input type="checkbox" name="consent" required> <span>Даю согласие на обработку персональных данных в соответствии с <a href="politika.html" target="_blank" rel="noopener">Политикой обработки персональных данных</a></span></label><span class="cerr">Без согласия мы не можем принять заявку</span><button class="btn btn-i" type="submit">Перезвоните мне</button>
+        
       </div>
       <p class="okmsg">Спасибо. Перезвоним в течение 15 минут в рабочее время.</p>
     </form>
@@ -402,6 +415,7 @@ html.mo .pi:hover{transform:translateY(-3px)}
   <div class="wrap">
     <img src="img/logo-light.svg" alt="Сонель" width="106" height="24">
     <span>ООО «Сонель», УНП 191448957, г. Минск, ул. Неманская, 24</span>
+    <nav class="legal" aria-label="Документы"><a href="politika.html">Политика обработки персональных данных</a><a href="cookie.html">Политика cookie</a></nav>
   </div>
 </footer>
 
@@ -410,6 +424,12 @@ html.mo .pi:hover{transform:translateY(-3px)}
   <a href="https://t.me/+375291402025"><svg><use href="#i-tg"/></svg>Telegram</a>
   <button class="p" data-quiz>Узнать цену</button>
 </nav>
+
+<div class="ckb" id="ckb" role="region" aria-label="Cookie">
+  <p>Сайт использует файлы cookie. Подробнее в <a href="cookie.html">Политике cookie</a>.</p>
+  <div class="b"><button class="btn btn-i" data-ck="1">Принять</button><button class="btn btn-o" data-ck="0">Только необходимые</button></div>
+</div>
+<!-- TODO: подключать аналитику (Метрика и т.п.) только после согласия: проверять localStorage 'sonel-ck' === '1' -->
 
 <div class="qz" id="qz" role="dialog" aria-modal="true" aria-labelledby="qtitle">
   <div class="qbox">
@@ -446,12 +466,18 @@ html.mo .pi:hover{transform:translateY(-3px)}
 
   }
 
+  // ---- cookie ----
+  var ck=document.getElementById('ckb'),v=null;
+  try{v=localStorage.getItem('sonel-ck')}catch(e){}
+  if(v===null)ck.classList.add('show');
+  ck.querySelectorAll('[data-ck]').forEach(function(b){b.addEventListener('click',function(){try{localStorage.setItem('sonel-ck',b.dataset.ck)}catch(e){}ck.classList.remove('show')})});
+
   // ---- форма ----
   document.querySelectorAll('.cf').forEach(function(f){
     f.addEventListener('submit',function(e){
       e.preventDefault();if(f.website.value)return;
-      var t=f.phone,fl=t.closest('.fld'),ok=t.value.replace(/\D/g,'').length>=9;
-      fl.classList.toggle('bad',!ok);if(ok)f.classList.add('sent');else t.focus();
+      var t=f.phone,fl=t.closest('.fld'),ok=t.value.replace(/\D/g,'').length>=9,c=f.consent.checked;
+      fl.classList.toggle('bad',!ok);f.classList.toggle('nocons',!c);if(ok&&c)f.classList.add('sent');else if(!ok)t.focus();else f.consent.focus();
     });
   });
 
@@ -478,15 +504,16 @@ html.mo .pi:hover{transform:translateY(-3px)}
       '<div class="chips" role="group" aria-label="Способ связи">'+['Звонок','Telegram','Viber','WhatsApp'].map(function(c){return '<button type="button" class="'+(c===via?'on':'')+'">'+c+'</button>'}).join('')+'</div>'+
       '<div class="fld"><label for="q-n">Имя</label><input id="q-n" name="name" autocomplete="name"></div>'+
       '<div class="fld"><label for="q-t">Телефон</label><input id="q-t" name="phone" type="tel" autocomplete="tel" placeholder="+375 29 000-00-00"><span class="err">Нужен номер, чтобы связаться</span></div>'+
+      '<label class="cons"><input type="checkbox" name="consent" required> <span>Даю согласие на обработку персональных данных в соответствии с <a href="politika.html" target="_blank" rel="noopener">Политикой обработки персональных данных</a></span></label><span class="cerr">Без согласия мы не можем принять заявку</span>'+
       '<button class="btn btn-i" type="submit">Получить стоимость</button>'+
-      '<p class="agree">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</p></form>'+
+      '</form>'+
       '<button class="qback">Назад</button>';
       var f=body.querySelector('form');
       f.querySelectorAll('.chips button').forEach(function(c){c.addEventListener('click',function(){via=c.textContent;f.querySelectorAll('.chips button').forEach(function(x){x.classList.toggle('on',x===c)})})});
       f.addEventListener('submit',function(e){
         e.preventDefault();if(f.website.value)return;
-        var fl=f.phone.closest('.fld'),ok=f.phone.value.replace(/\D/g,'').length>=9;fl.classList.toggle('bad',!ok);
-        if(!ok){f.phone.focus();return}
+        var fl=f.phone.closest('.fld'),ok=f.phone.value.replace(/\D/g,'').length>=9,c=f.consent.checked;fl.classList.toggle('bad',!ok);f.classList.toggle('nocons',!c);
+        if(!ok){f.phone.focus();return}if(!c){f.consent.focus();return}
         // для бэка: ans, via, name, phone
         body.innerHTML='<h3 id="qtitle">Спасибо</h3><p>Главный бухгалтер свяжется с вами в течение 15 минут в рабочее время.</p>';
         st.textContent='Готово';
