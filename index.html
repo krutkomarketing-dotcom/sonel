@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Бухгалтерские услуги в Минске для ООО и ИП — Сонель</title>
-<meta name="description" content="Бухгалтерское обслуживание ООО и ИП в Минске с 2011 года. Штрафы по нашей вине возмещаем, ответственность застрахована в Белгосстрахе.">
+<meta name="description" content="Бухгалтерское обслуживание ООО и ИП в Минске с 2011 года. Штрафы, начисленные по нашей ошибке, возмещаем по договору.">
 <link rel="icon" href="img/logo-mark.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -62,7 +62,7 @@ section{scroll-margin-top:68px}
 /* hero */
 .hero{background:var(--ink);color:#fff}
 .hero .wrap{display:grid;gap:36px;padding-block:44px 52px}
-.hero h1{font-size:clamp(2.4rem,5.4vw,4.3rem);font-weight:600;letter-spacing:-.015em;max-width:12ch}
+.hero h1{font-size:clamp(2.4rem,5.4vw,4.3rem);font-weight:600;letter-spacing:-.015em;max-width:15ch}
 .hero .lead{font-size:clamp(1.08rem,1.6vw,1.3rem);margin-top:20px;color:#DCE2F5;max-width:34ch}
 .hero .acts{display:flex;flex-direction:column;gap:10px;margin-top:30px}
 @media(min-width:560px){.hero .acts{flex-direction:row}}
@@ -119,12 +119,12 @@ section{scroll-margin-top:68px}
 .duty p+p{margin-top:14px}
 .slot{border:1.5px dashed #B7BCCD;border-radius:var(--r-lg);display:grid;place-items:center;text-align:center;color:var(--text2);font-size:14.5px;padding:20px;background:var(--soft)}
 .duty .slot{aspect-ratio:3/4;max-width:340px;width:100%}
-@media(min-width:900px){.duty{padding:110px 0}.duty .wrap{grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:80px;align-items:center}.duty .slot{justify-self:end}}
+@media(min-width:900px){.duty{padding:110px 0}.duty .wrap>div{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:80px}.duty h2{grid-row:span 2}}
 
 /* люди */
 .team{padding:0 0 72px}
 .tg{display:grid;gap:22px}
-.p .slot{aspect-ratio:3/2;margin-bottom:14px}
+.p{border-top:2px solid var(--text);padding-top:18px}
 .p h3{margin-bottom:4px}
 .p p{color:var(--text2);font-size:16px}
 @media(min-width:760px){.tg{grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}}
@@ -249,8 +249,8 @@ html.mo .pi:hover{transform:translateY(-3px)}
 <section class="hero">
   <div class="wrap">
     <div>
-      <h1 class="in">Ведём учёт и отвечаем за него деньгами</h1>
-      <p class="lead in" style="--i:1">Бухгалтерия ООО и ИП в Минске с 2011 года. Если ошибёмся мы, штраф платим тоже мы.</p>
+      <h1 class="in">Бухгалтерия для ООО и&nbsp;ИП в&nbsp;Минске</h1>
+      <p class="lead in" style="--i:1">Ведём учёт с 2011 года. Если штраф начислят из-за нашей ошибки, возместим его по договору.</p>
       <div class="acts in" style="--i:2">
         <button class="btn btn-w" data-quiz>Узнать стоимость</button>
         <a class="btn btn-line" href="tel:+375291402025">Позвонить</a>
@@ -265,14 +265,14 @@ html.mo .pi:hover{transform:translateY(-3px)}
       <div class="bar"><i id="due-bar"></i></div>
       <p class="left" id="due-left"></p>
       <ul id="due-list"></ul>
-      <p class="foot">Нашим клиентам об этих датах думать не надо.</p>
+      <p class="foot">За клиентов эти сроки отслеживаем мы.</p>
     </aside>
   </div>
 </section>
 
 <section class="rhythm" id="uchet">
   <div class="wrap">
-    <h2>Что мы берём на себя</h2>
+    <h2>Что входит в обслуживание</h2>
     <div class="rh">
       <div class="col">
         <h3>Каждый месяц<small>пока вы работаете</small></h3>
@@ -292,7 +292,7 @@ html.mo .pi:hover{transform:translateY(-3px)}
 
 <section class="price" id="ceny">
   <div class="wrap">
-    <h2>Сколько стоит</h2>
+    <h2>Цены</h2>
     <!-- TODO: подтвердить у клиента все цены -->
     <div class="pg">
       <div class="pi main"><span class="n">ООО целиком</span><span class="s">Весь учёт, налоги, зарплата и отчётность. Закреплённый бухгалтер и кадровик.</span><span class="v">от 450 р. в месяц</span></div>
@@ -301,30 +301,29 @@ html.mo .pi:hover{transform:translateY(-3px)}
       <div class="pi"><span class="n">Один участок</span><span class="s">Только зарплата, первичка или отчётность</span><span class="v">от 100 р.</span></div>
       <div class="pi"><span class="n">Разовые задачи</span><span class="s">Проверка, кредит, ликвидация</span><span class="v">по задаче</span></div>
     </div>
-    <p class="note">Точная цена зависит от системы налогообложения, числа документов и сотрудников. <a href="#" data-quiz>Ответьте на 4 вопроса</a>, и мы её назовём.</p>
+    <p class="note">Цена зависит от системы налогообложения, количества документов и сотрудников. <a href="#" data-quiz>Ответьте на 4 вопроса</a>, и мы посчитаем.</p>
   </div>
 </section>
 
 <section class="duty" id="otvetstvennost">
   <div class="wrap">
     <div>
-      <h2>Если проверка найдёт нашу ошибку</h2>
+      <h2>Ответственность за ошибки</h2>
       <!-- TODO: подтвердить у клиента сумму страхового покрытия -->
-      <p>Штрафы и пени, начисленные по нашей вине, мы возмещаем. Это записано в договоре, а профессиональная ответственность компании застрахована в Белгосстрахе.</p>
-      <p>Звонки из налоговой и ФСЗН принимаем на себя. У наших клиентов адреса во всех районах Минска, поэтому любые проверки для нас обычная работа.</p>
+      <p>Если из-за нашей ошибки налоговая начислит штраф или пеню, мы их возместим. Это прописано в договоре. Ответственность компании застрахована в Белгосстрахе.</p>
+      <p>С инспекторами налоговой и ФСЗН общаемся сами. Клиенты у нас из всех районов Минска, проверки проходили разные: камеральные, плановые, ликвидационные.</p>
     </div>
-    <div class="slot">Скан страхового полиса Белгосстраха<br>(img/polis.jpg, 3:4)</div>
   </div>
 </section>
 
 <section class="team" aria-labelledby="team-h">
   <div class="wrap">
-    <h2 id="team-h">Кто будет вести ваш учёт</h2>
-    <!-- TODO: фото, имена и стаж сотрудников от клиента -->
+    <h2 id="team-h">Кто с вами работает</h2>
+    <!-- TODO: имена и стаж сотрудников от клиента -->
     <div class="tg">
-      <div class="p"><div class="slot">Фото бухгалтера</div><h3>Закреплённый бухгалтер</h3><p>Один человек на вашу компанию. Если он в отпуске, его участок ведёт коллега.</p></div>
-      <div class="p"><div class="slot">Фото кадровика</div><h3>Кадровик</h3><p>Отдельный специалист по кадрам. Работал в военкомате, поэтому воинский учёт знает изнутри.</p></div>
-      <div class="p"><div class="slot">Фото главного бухгалтера</div><h3>Главные бухгалтеры</h3><p>Руководство компании со стажем больше 20 лет. Консультирует клиентов бесплатно.</p></div>
+      <div class="p"><h3>Закреплённый бухгалтер</h3><p>За вашей компанией закреплён один бухгалтер. Когда он в отпуске или на больничном, учёт ведёт коллега.</p></div>
+      <div class="p"><h3>Кадровик</h3><p>Кадры у нас ведёт отдельный специалист, а не бухгалтер. Раньше работал в военкомате.</p></div>
+      <div class="p"><h3>Главные бухгалтеры</h3><p>Руководители компании, стаж больше 20 лет. Клиенты могут звонить им с любым вопросом, бесплатно.</p></div>
     </div>
   </div>
 </section>
@@ -351,9 +350,9 @@ html.mo .pi:hover{transform:translateY(-3px)}
   <div class="wrap">
     <article>
       <h2>Бухгалтерские услуги в Минске для ООО и ИП</h2>
-      <p>Бухгалтерских компаний в Минске много. Разница видна, когда приходит проверка или бухгалтер уходит в отпуск. Перед договором спросите, кто платит штраф за ошибку компании, кто ведёт кадры и можно ли напрямую поговорить с главбухом.</p>
+      <p>Ведём бухгалтерский, налоговый и кадровый учёт для ООО, ЧУП и ИП в Минске с 2011 года. Работаем с УСН и общей системой, с НДС и без. Учёт можно передать целиком или только отдельный участок.</p>
       <h3>Как выбрать систему налогообложения</h3>
-      <p>Иногда налог снижает смена схемы работы, а система остаётся прежней. По договору комиссии налог при УСН платится только с вознаграждения комиссионера. Мы считаем варианты на старте и проверяем выбор после каждого налогового периода.</p>
+      <p>В начале работы считаем несколько вариантов под ваши обороты. Например, при договоре комиссии налог по УСН платится только с вознаграждения, а не со всей выручки. После каждого закрытого периода проверяем, не пора ли что-то поменять.</p>
       <h3>Если учёт запущен</h3>
       <p>Принимаем дела у прежнего бухгалтера, восстанавливаем первичку и сверяемся с налоговой. После этого переводим на обычное обслуживание.</p>
     </article>
@@ -370,8 +369,8 @@ html.mo .pi:hover{transform:translateY(-3px)}
 <section class="close" id="zayavka">
   <div class="wrap">
     <div>
-      <h2>Назовём цену после одного звонка</h2>
-      <p>Оставьте номер, перезвонит главный бухгалтер. Или пройдите 4 вопроса, это быстрее.</p>
+      <h2>Узнать стоимость обслуживания</h2>
+      <p>Оставьте номер, главный бухгалтер перезвонит в рабочее время.</p>
     </div>
     <form class="cf" data-lendos-form novalidate>
       <!-- Бэк подключает скилл lendos-back -->
@@ -379,7 +378,7 @@ html.mo .pi:hover{transform:translateY(-3px)}
         <div class="hp" aria-hidden="true"><input name="website" tabindex="-1" autocomplete="off"></div>
         <div class="fld"><label for="c-n">Имя</label><input id="c-n" name="name" autocomplete="name"></div>
         <div class="fld"><label for="c-t">Телефон</label><input id="c-t" name="phone" type="tel" autocomplete="tel" placeholder="+375 29 000-00-00"><span class="err">Нужен номер, чтобы перезвонить</span></div>
-        <button class="btn btn-i" type="submit">Жду звонка</button>
+        <button class="btn btn-i" type="submit">Перезвоните мне</button>
         <p class="agree">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</p>
       </div>
       <p class="okmsg">Спасибо. Перезвоним в течение 15 минут в рабочее время.</p>
@@ -478,7 +477,7 @@ html.mo .pi:hover{transform:translateY(-3px)}
         var fl=f.phone.closest('.fld'),ok=f.phone.value.replace(/\D/g,'').length>=9;fl.classList.toggle('bad',!ok);
         if(!ok){f.phone.focus();return}
         // для бэка: ans, via, name, phone
-        body.innerHTML='<h3 id="qtitle">Спасибо, считаем</h3><p>Главный бухгалтер свяжется с вами в течение 15 минут в рабочее время.</p>';
+        body.innerHTML='<h3 id="qtitle">Спасибо</h3><p>Главный бухгалтер свяжется с вами в течение 15 минут в рабочее время.</p>';
         st.textContent='Готово';
       });
     }
