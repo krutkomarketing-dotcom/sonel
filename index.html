@@ -10,12 +10,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap&subset=cyrillic" rel="stylesheet">
 <style>
-/* Стиль по мотивам finmasters.by: тёмные полосы-заголовки, плитка «в шахматку» фиолетовый/бирюзовый,
+/* Тёмные полосы-заголовки, плитка «в шахматку» синий/изумрудный,
    круглые контурные иконки, шрифт Ubuntu. Тёмные плитки с иконками сейчас вместо фото:
    фото потом ставится фоном через --img на .tile.pic */
 :root{
   --bg:#121315; --band:#1B1C1F; --pic:#24262B; --pic2:#2C2F35;
-  --vio:#7C70D8; --vio-d:#6A5ECB; --tea:#3FB0BE; --tea-d:#2F9DAB; --red:#E3262F; --red-d:#C81D25;
+  --vio:#4F63D9; --vio-d:#3F52C4; --tea:#22A88F; --tea-d:#1A947D; --red:#E3262F; --red-d:#C81D25;
   --w:#FFFFFF; --w2:rgba(255,255,255,.78); --w3:rgba(255,255,255,.55); --line:rgba(255,255,255,.12);
   --f:'Ubuntu',system-ui,sans-serif; --r:999px;
 }
@@ -203,9 +203,9 @@ form.sent .okmsg{display:block}form.sent .fb{display:none}
 /* плавающий виджет и наверх: только десктоп */
 .widget,.up{display:none}
 @media(min-width:1024px){
-  .widget{display:flex;position:fixed;right:96px;bottom:24px;z-index:80;background:var(--red);color:#fff;border:0;border-radius:14px;padding:14px 20px 14px 16px;gap:14px;align-items:center;cursor:pointer;text-align:left;box-shadow:0 14px 30px -12px rgba(227,38,47,.7);font-family:var(--f);transition:background-color .2s,transform .2s}
-  .widget:hover{background:var(--red-d);transform:translateY(-2px)}
-  .widget svg{width:38px;height:38px;flex:none}
+  .widget{display:flex;position:fixed;right:96px;bottom:24px;z-index:80;background:var(--tea);color:#fff;border:0;border-radius:14px;padding:14px 20px 14px 16px;gap:14px;align-items:center;cursor:pointer;text-align:left;box-shadow:0 14px 30px -12px rgba(34,168,143,.7);font-family:var(--f);transition:background-color .2s,transform .2s}
+  .widget:hover{background:var(--tea-d);transform:translateY(-2px)}
+  .widget svg{width:32px;height:32px;flex:none}
   .widget b{display:block;font-size:17px;font-weight:500;line-height:1.2}
   .widget small{display:block;font-size:13.5px;opacity:.9;margin-top:4px}
   .up{display:grid;place-items:center;position:fixed;right:24px;bottom:30px;z-index:80;width:56px;height:56px;border-radius:50%;border:2px solid rgba(255,255,255,.7);background:rgba(18,19,21,.7);color:#fff;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .25s}
@@ -245,7 +245,7 @@ form.sent .okmsg{display:block}form.sent .fb{display:none}
 .opt{display:flex;align-items:center;gap:14px;text-align:left;padding:16px 18px;border:1.5px solid rgba(255,255,255,.2);background:rgba(255,255,255,.03);font:400 17px var(--f);color:#fff;cursor:pointer;transition:border-color .15s,background-color .15s}
 .opt i{width:20px;height:20px;border-radius:50%;border:2px solid rgba(255,255,255,.6);flex:none}
 .opt:hover{border-color:var(--tea)}
-.opt.on{border-color:var(--tea);background:rgba(63,176,190,.15)}
+.opt.on{border-color:var(--tea);background:rgba(34,168,143,.18)}
 .opt.on i{border-color:var(--tea);background:radial-gradient(circle,var(--tea) 0 4px,transparent 5px)}
 .qback{margin-top:20px;background:none;border:0;font:500 15px var(--f);color:var(--w2);cursor:pointer;padding:8px 0;text-decoration:underline;text-underline-offset:3px}
 .qf{display:grid;gap:12px;max-width:460px}
@@ -308,7 +308,7 @@ html.mo .tile.v:hover,html.mo .tile.t:hover{filter:brightness(1.07)}
 <body>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-  <symbol id="logo" viewBox="0 0 40 40"><path d="M30.6 9.4A15 15 0 1 0 30.6 30.6" fill="none" stroke="#3FB0BE" stroke-width="6"/><circle cx="20" cy="20" r="4.5" fill="#7C70D8"/></symbol>
+  <symbol id="logo" viewBox="0 0 40 40"><path d="M30.6 9.4A15 15 0 1 0 30.6 30.6" fill="none" stroke="#22A88F" stroke-width="6"/><circle cx="20" cy="20" r="4.5" fill="#4F63D9"/></symbol>
   <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></symbol>
   <symbol id="i-tg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 4 3 11l6 2.2M21 4l-3.5 16-8.5-6.8M21 4 9 13.2V19l3.2-3.3"/></symbol>
   <symbol id="i-viber" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c5 0 8 2.2 8 7.5S17 18 12 18l-3.5 3v-3.4C5.6 16.7 4 14.4 4 10.5 4 5.2 7 3 12 3Z"/><path d="M9.6 8.4c0 3 2 5 5 5l.8-1.3-1.8-1-.8.7a3 3 0 0 1-1.6-1.6l.7-.8-1-1.8z"/></symbol>
@@ -334,7 +334,7 @@ html.mo .tile.v:hover,html.mo .tile.t:hover{filter:brightness(1.07)}
 <header class="hdr">
   <div class="box">
     <a class="logo" href="#top" aria-label="Сонель"><svg><use href="#logo"/></svg><span class="wm"><b>Со</b><span>нель</span></span></a>
-    <nav class="nav" aria-label="Разделы"><a href="#uslugi">Услуги</a><a href="#ceny">Цены</a><a href="#kak">Как мы работаем</a><a href="#kontakty">Контакты</a></nav>
+    <nav class="nav" aria-label="Разделы"><a href="#uslugi">Услуги</a><a href="#ceny">Цены</a><a href="#kak">Правила</a><a href="#kontakty">Офис</a></nav>
     <div class="r">
       <!-- TODO: подтвердить у клиента WhatsApp на этом номере -->
       <div class="msgr"><a class="tg" href="https://t.me/+375291402025" aria-label="Telegram" title="Telegram"><svg><use href="#i-tg"/></svg></a><a class="vb" href="viber://chat?number=%2B375291402025" aria-label="Viber" title="Viber"><svg><use href="#i-viber"/></svg></a><a class="wa" href="https://wa.me/375291402025" aria-label="WhatsApp" title="WhatsApp"><svg><use href="#i-wa"/></svg></a></div>
@@ -350,7 +350,7 @@ html.mo .tile.v:hover,html.mo .tile.t:hover{filter:brightness(1.07)}
   <div class="box slides" id="slides">
     <div class="slide" data-s="0">
       <div class="s-txt">
-        <span class="s-tag">Работающим компаниям</span>
+        <span class="s-tag">Если бизнес уже работает</span>
         <h1>Бухгалтерия для ООО и&nbsp;ИП в&nbsp;Минске</h1>
         <p class="lead">Ведём учёт с 2011 года. Штрафы, начисленные из-за нашей ошибки, возмещаем по договору.</p>
         <div class="s-act"><button class="btn btn-r" data-quiz>Узнать стоимость</button><a class="btn btn-o" href="tel:+375291402025">Позвонить</a></div>
@@ -364,11 +364,11 @@ html.mo .tile.v:hover,html.mo .tile.t:hover{filter:brightness(1.07)}
     </div>
     <div class="slide" data-s="1" hidden>
       <div class="s-txt">
-        <span class="s-tag">Новым компаниям</span>
+        <span class="s-tag">Если только регистрируетесь</span>
         <p class="h1">Откроем компанию и&nbsp;поставим учёт с&nbsp;нуля</p>
         <!-- TODO: подтвердить у клиента акцию «регистрация бесплатно при договоре» -->
-        <p class="lead">Регистрация бесплатно при договоре на бухгалтерское обслуживание. Систему налогообложения подберём до старта.</p>
-        <div class="s-act"><button class="btn btn-r" data-quiz data-preset="new">Открыть компанию</button><a class="btn btn-o" href="tel:+375291402025">Позвонить</a></div>
+        <p class="lead">Зарегистрируем без оплаты, если дальше учёт ведём мы. Систему налогообложения подберём ещё до первой сделки.</p>
+        <div class="s-act"><button class="btn btn-r" data-quiz data-preset="new">Зарегистрировать</button><a class="btn btn-o" href="tel:+375291402025">Позвонить</a></div>
       </div>
       <div class="mosaic" aria-hidden="true">
         <div class="tile pic"><span class="ring"><svg><use href="#i-doc"/></svg></span></div>
@@ -387,19 +387,19 @@ html.mo .tile.v:hover,html.mo .tile.t:hover{filter:brightness(1.07)}
 
 <section class="promo" aria-label="Акция">
   <div class="box">
-    <p><b>Открытие компании бесплатно</b> при заключении договора на бухгалтерское обслуживание</p>
+    <p><b>Регистрация нового ООО или ИП без оплаты</b>, если дальше учёт ведём мы</p>
     <button class="btn btn-o" data-quiz data-preset="new">Подробнее</button>
   </div>
 </section>
 
 <section id="uslugi" class="box">
-  <div class="band"><h2>Мы предлагаем</h2></div>
+  <div class="band"><h2>Услуги</h2></div>
   <div class="tiles t3 rv">
-    <div class="tile v c" style="--i:0"><span class="mini"><svg><use href="#i-doc"/></svg></span><a class="lnk" href="#" data-quiz>Оперативное бухгалтерское обслуживание</a><p class="ds">Полностью или по участкам: накладные, платёжки, все налоги, зарплата, отчётность.</p></div>
+    <div class="tile v c" style="--i:0"><span class="mini"><svg><use href="#i-doc"/></svg></span><a class="lnk" href="#" data-quiz>Ведём учёт целиком или по участкам</a><p class="ds">Накладные, платёжки, налоги, ЭСЧФ, зарплата и вся отчётность.</p></div>
     <div class="tile pic" style="--i:1"><span class="ring"><svg><use href="#i-down"/></svg></span></div>
-    <div class="tile t c" style="--i:2"><span class="mini"><svg><use href="#i-chat"/></svg></span><a class="lnk" href="#" data-quiz>Бесплатное консультирование при обслуживании</a><p class="ds">Вопросы закреплённому бухгалтеру и напрямую руководству компании.</p></div>
+    <div class="tile t c" style="--i:2"><span class="mini"><svg><use href="#i-chat"/></svg></span><a class="lnk" href="#" data-quiz>Главбух отвечает без доплаты</a><p class="ds">Клиенты на обслуживании задают вопросы своему бухгалтеру и руководству компании.</p></div>
     <div class="tile pic" style="--i:3"><span class="ring"><svg><use href="#i-arrowup"/></svg></span></div>
-    <div class="tile v c" style="--i:4"><span class="mini"><svg><use href="#i-users"/></svg></span><a class="lnk" href="#" data-quiz>Профессиональный кадровый учёт сотрудников</a><p class="ds">Ведёт отдельный кадровик с опытом работы в военкомате.</p></div>
+    <div class="tile v c" style="--i:4"><span class="mini"><svg><use href="#i-users"/></svg></span><a class="lnk" href="#" data-quiz>Отдельный кадровик для ваших сотрудников</a><p class="ds">Приём, увольнение, договоры подряда и воинский учёт. Раньше работал в военкомате.</p></div>
     <div class="tile pic" style="--i:5"><span class="ring"><svg><use href="#i-arrowup"/></svg></span></div>
   </div>
 </section>
@@ -418,27 +418,27 @@ html.mo .tile.v:hover,html.mo .tile.t:hover{filter:brightness(1.07)}
 </section>
 
 <section id="kak" class="box">
-  <div class="band"><h2>Как мы работаем</h2></div>
+  <div class="band"><h2>Наши правила</h2></div>
   <div class="tiles t4 rv">
     <div class="tile pic" style="--i:0"><span class="ring"><svg><use href="#i-expand"/></svg></span><svg class="chev r"><use href="#i-right"/></svg></div>
-    <div class="tile t" style="--i:1"><span class="mini"><svg><use href="#i-expand"/></svg></span><span class="lnk">Не занимаем место у&nbsp;вас в&nbsp;офисе</span><p class="ds">Рабочее место, 1С и обучение бухгалтера на нашей стороне.</p></div>
+    <div class="tile t" style="--i:1"><span class="mini"><svg><use href="#i-expand"/></svg></span><span class="lnk">Бухгалтеру не&nbsp;нужен стол у&nbsp;вас</span><p class="ds">Компьютер, 1С и обучение специалиста на нашей стороне.</p></div>
     <div class="tile pic" style="--i:2"><span class="ring"><svg><use href="#i-therm"/></svg></span><svg class="chev r"><use href="#i-right"/></svg></div>
-    <div class="tile v" style="--i:3"><span class="mini"><svg><use href="#i-therm"/></svg></span><span class="lnk">Не болеем и&nbsp;не ходим в&nbsp;отпуск</span><p class="ds">Сотрудники подменяют друг друга, учёт не останавливается.</p></div>
+    <div class="tile v" style="--i:3"><span class="mini"><svg><use href="#i-therm"/></svg></span><span class="lnk">Учёт не&nbsp;встаёт на&nbsp;время отпусков</span><p class="ds">Если ваш бухгалтер отсутствует, его участок сразу ведёт коллега.</p></div>
 
-    <div class="tile t rt" style="--i:4"><span class="mini"><svg><use href="#i-calc"/></svg></span><span class="lnk">Решаем вопросы с&nbsp;налоговиками и&nbsp;ФСЗН</span><p class="ds">Звонки инспекторов берём на себя. Проходили камеральные, плановые и ликвидационные проверки.</p></div>
+    <div class="tile t rt" style="--i:4"><span class="mini"><svg><use href="#i-calc"/></svg></span><span class="lnk">С&nbsp;инспекторами общаемся сами</span><p class="ds">Налоговая и ФСЗН звонят нам. Камеральные, плановые и ликвидационные проверки проходили не раз.</p></div>
     <div class="tile pic" style="--i:5"><span class="ring"><svg><use href="#i-calc"/></svg></span><svg class="chev l"><use href="#i-right"/></svg></div>
-    <div class="tile v rt" style="--i:6"><span class="mini"><svg><use href="#i-bulb"/></svg></span><span class="lnk">Предлагаем варианты решения ваших вопросов</span><p class="ds">Юристы, адвокаты, аудиторы, программист 1С и банки-партнёры.</p></div>
+    <div class="tile v rt" style="--i:6"><span class="mini"><svg><use href="#i-bulb"/></svg></span><span class="lnk">Подключаем юристов и&nbsp;аудиторов</span><p class="ds">Если вопрос выходит за рамки учёта, сведём с адвокатом, аудитором, программистом 1С или банком.</p></div>
     <div class="tile pic" style="--i:7"><span class="ring"><svg><use href="#i-bulb"/></svg></span><svg class="chev l"><use href="#i-right"/></svg></div>
 
     <div class="tile pic" style="--i:8"><span class="ring"><svg><use href="#i-shield"/></svg></span><svg class="chev r"><use href="#i-right"/></svg></div>
-    <div class="tile v" style="--i:9"><span class="mini"><svg><use href="#i-shield"/></svg></span><span class="lnk">Берём на себя риски ошибок и&nbsp;штрафов</span><p class="ds">Штрафы и пени по нашей вине возмещаем. Ответственность застрахована в Белгосстрахе.</p><!-- TODO: сумма страхового покрытия --></div>
+    <div class="tile v" style="--i:9"><span class="mini"><svg><use href="#i-shield"/></svg></span><span class="lnk">Штрафы по&nbsp;нашей вине возмещаем</span><p class="ds">Это прописано в договоре. Ответственность компании застрахована в Белгосстрахе.</p><!-- TODO: сумма страхового покрытия --></div>
     <div class="tile pic" style="--i:10"><span class="ring"><svg><use href="#i-case"/></svg></span><svg class="chev r"><use href="#i-right"/></svg></div>
-    <div class="tile t" style="--i:11"><span class="mini"><svg><use href="#i-case"/></svg></span><span class="lnk">Имеем большой опыт работы в&nbsp;сфере финансов</span><p class="ds">Готовим документы для кредитов в банках и пишем бизнес-планы.</p></div>
+    <div class="tile t" style="--i:11"><span class="mini"><svg><use href="#i-case"/></svg></span><span class="lnk">Готовим документы для&nbsp;банков</span><p class="ds">Пакеты на кредит и бизнес-планы собираем сами, по своей же отчётности.</p></div>
   </div>
 </section>
 
 <section id="rukovodstvo" class="box">
-  <div class="band"><h2>Только для вас</h2></div>
+  <div class="band"><h2>Руководители на связи</h2></div>
   <!-- TODO: имена, должности, личные телефоны и почта руководителей. Фото потом: style="--img:url(img/...)" на .tile.pic -->
   <div class="tiles t4 lead4 rv">
     <div class="tile pic" style="--i:0"><span class="ini" aria-hidden="true">ИФ</span></div>
@@ -449,13 +449,13 @@ html.mo .tile.v:hover,html.mo .tile.t:hover{filter:brightness(1.07)}
 </section>
 
 <section id="kontakty" class="box duo" aria-label="Контакты и обратная связь">
-  <div class="band"><h2>Где мы находимся</h2></div>
+  <div class="band"><h2>Офис</h2></div>
   <div class="mapw">
     <iframe src="https://yandex.by/map-widget/v1/?text=%D0%9C%D0%B8%D0%BD%D1%81%D0%BA%2C%20%D0%9D%D0%B5%D0%BC%D0%B0%D0%BD%D1%81%D0%BA%D0%B0%D1%8F%2024&z=16" title="Офис Сонель на карте" loading="lazy"></iframe>
     <!-- TODO: подтвердить у клиента часы работы -->
     <div class="addr up-rv"><p>г. Минск, ул. Неманская, 24<br>оф. 20, 3 этаж</p><small>пн–пт, 9:00–18:00</small></div>
   </div>
-  <div class="band" id="zayavka"><h2>Обратная связь</h2></div>
+  <div class="band" id="zayavka"><h2>Задать вопрос</h2></div>
   <div class="fbk">
     <form class="ff up-rv" data-lendos-form novalidate>
       <!-- Бэк подключает скилл lendos-back -->
@@ -498,7 +498,7 @@ html.mo .tile.v:hover,html.mo .tile.t:hover{filter:brightness(1.07)}
 
 <footer class="ftr">
   <div class="box top">
-    <div><span class="logo"><svg><use href="#logo"/></svg><span class="wm"><b>Со</b><span>нель</span></span></span><div>Бухгалтерия без лишних хлопот</div></div>
+    <div><span class="logo"><svg><use href="#logo"/></svg><span class="wm"><b>Со</b><span>нель</span></span></span><div>Бухгалтерский и кадровый учёт с 2011 года</div></div>
     <div>220063, г. Минск<br>ул. Неманская, 24<br>оф. 20, 3 этаж</div>
     <div>ООО «Сонель»<br>УНП 191448957<br>на рынке с 2011 года</div>
     <div><a href="tel:+375291402025">+375 (29) 140-20-25</a><br><a href="tel:+375173603653">+375 (17) 360-36-53</a><br><a href="mailto:sonel.buh@gmail.com">sonel.buh@gmail.com</a></div>
@@ -506,7 +506,7 @@ html.mo .tile.v:hover,html.mo .tile.t:hover{filter:brightness(1.07)}
   <div class="bot"><div class="box"><span>© 2026, Общество с ограниченной ответственностью «Сонель»</span><span><a href="politika.html">Политика обработки персональных данных</a> · <a href="cookie.html">Политика cookie</a></span></div></div>
 </footer>
 
-<button class="widget" data-quiz><svg><use href="#i-hand"/></svg><span><b>Получи бесплатную консультацию</b><small>по одному вопросу налогообложения</small></span></button>
+<button class="widget" data-quiz><svg><use href="#i-calc"/></svg><span><b>Узнать стоимость учёта</b><small>4 вопроса, ответ в течение 15 минут</small></span></button>
 <button class="up" id="up" aria-label="Наверх"><svg><use href="#i-up"/></svg></button>
 
 <nav class="mbar" aria-label="Быстрые действия">
