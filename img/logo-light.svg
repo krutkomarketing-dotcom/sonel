@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 48" width="440" height="96">
-  <path d="M34.6 12.6A16 16 0 1 0 34.6 35.4" fill="none" stroke="#F2B400" stroke-width="6.5"/>
-  <circle cx="23.3" cy="24" r="5" fill="#0E1726"/>
-  <text x="50" y="33.5" font-family="Montserrat, Arial, sans-serif" font-weight="800" font-size="27" letter-spacing="-.5" fill="#0E1726">СОНЕЛЬ</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 48" width="420" height="96">
+  <path d="M34.6 12.6A16 16 0 1 0 34.6 35.4" fill="none" stroke="#1F3A93" stroke-width="6.5"/>
+  <circle cx="23.3" cy="24" r="5" fill="#E0412F"/>
+  <text x="50" y="33.5" font-family="Jost, 'Futura', Arial, sans-serif" font-weight="600" font-size="28" fill="#14193A">Сонель</text>
 </svg>
