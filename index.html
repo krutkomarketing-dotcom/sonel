@@ -104,7 +104,9 @@ section{scroll-margin-top:68px}
 
 /* цены */
 .price{background:var(--soft);padding:72px 0}
-.pg{display:grid;gap:12px}
+.pg{display:grid;gap:10px;grid-template-columns:1fr 1fr}
+.pi.main{grid-column:1/-1}
+@media(max-width:759px){.pi{padding:16px}.pi .v{font-size:1.3rem}.pi .s{font-size:14.5px}}
 .pi{background:#fff;border-radius:var(--r-lg);padding:22px;display:flex;flex-direction:column;gap:6px}
 .pi .n{font-family:var(--head);font-weight:600;font-size:1.15rem}
 .pi .s{font-size:15.5px;color:var(--text2)}
@@ -113,7 +115,7 @@ section{scroll-margin-top:68px}
 .pi.main .s{color:#DCE2F5}.pi.main .v{color:#fff}
 .price .note{margin-top:22px;font-size:16px;color:var(--text2)}
 .price .note a{color:var(--ink);font-weight:700}
-@media(min-width:760px){.pg{grid-template-columns:repeat(2,minmax(0,1fr))}.pi.main{grid-row:span 2}}
+@media(min-width:760px){.pg{grid-template-columns:repeat(2,minmax(0,1fr))}.pi.main{grid-column:auto;grid-row:span 2}}
 @media(min-width:1024px){.price{padding:110px 0}.pg{grid-template-columns:1.3fr 1fr 1fr}.pi{padding:28px}.pi.main .v{font-size:2.4rem}}
 
 /* ответственность */
@@ -202,6 +204,44 @@ form.sent .okmsg{display:block}form.sent .fb{display:none}
 .ftr .wrap{display:flex;flex-wrap:wrap;gap:10px 30px;justify-content:space-between;align-items:center}
 .ftr img{height:24px}
 
+
+/* переключатель ситуации */
+.seg{display:inline-flex;background:rgba(255,255,255,.12);border-radius:var(--r);padding:4px;margin-bottom:22px;gap:4px}
+.seg button{border:0;background:none;color:#DCE2F5;font:600 15px var(--head);padding:9px 14px;border-radius:3px;cursor:pointer}
+.seg button[aria-selected="true"]{background:#fff;color:var(--ink)}
+.hero .h1{font-family:var(--head);font-size:clamp(2.4rem,5vw,3.9rem);font-weight:600;line-height:1.08;letter-spacing:-.015em;max-width:17ch;text-wrap:balance}
+/* промо */
+.promo{background:var(--soft);border-bottom:1px solid var(--line)}
+.promo .wrap{display:flex;flex-wrap:wrap;gap:14px 30px;align-items:center;justify-content:space-between;padding-block:22px}
+.promo p{font-size:1.1rem;max-width:none}
+.promo b{color:var(--due)}
+.promo .btn{height:48px;font-size:16px}
+/* как работаем */
+.how{padding:72px 0}
+.hw{display:grid;gap:0}
+.hi{padding:22px 0;border-top:1px solid var(--line)}
+.hi h3{margin-bottom:6px}
+.hi p{color:var(--text2);font-size:16px}
+.hi.key{background:var(--ink);color:#fff;padding:24px;border-radius:var(--r-lg);border:0;margin:8px 0}
+.hi.key p{color:#DCE2F5}
+@media(min-width:760px){.hw{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:40px}}
+@media(min-width:1024px){.how{padding:110px 0}.hw{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:48px;row-gap:8px}.hi{padding:26px 0}.hi.key{margin:0;padding:26px}}
+/* руководители */
+.lead-s{background:var(--soft);padding:72px 0}
+.lead-s h2{margin-bottom:10px}
+.lead-s .sub{color:var(--text2);margin-bottom:30px}
+.lg2{display:grid;gap:14px}
+.person{background:#fff;border-radius:var(--r-lg);padding:22px;display:flex;gap:18px;align-items:flex-start}
+.ini{width:64px;height:64px;border-radius:50%;background:var(--ink-t);color:var(--ink);display:grid;place-items:center;font:600 20px var(--head);flex:none}
+.person .role{color:var(--text2);font-size:15.5px;margin:2px 0 10px}
+.person a{display:block;font-family:var(--head);font-weight:600;font-size:1.05rem;text-decoration:none;color:var(--text)}
+.person a:hover{color:var(--ink)}
+@media(min-width:760px){.lg2{grid-template-columns:1fr 1fr;gap:20px}.person{padding:28px}}
+@media(min-width:1024px){.lead-s{padding:110px 0}}
+/* плавающая кнопка: только десктоп */
+.pill{display:none}
+@media(min-width:1024px){.pill{display:block;position:fixed;left:24px;bottom:24px;z-index:80;background:var(--due);color:#fff;border:0;border-radius:var(--r);padding:14px 18px;font:600 15px var(--head);cursor:pointer;box-shadow:0 10px 24px -10px rgba(224,65,47,.6);transition:transform .2s,background-color .2s}.pill:hover{background:#C9361F;transform:translateY(-2px)}}
+
 /* мобильная панель */
 .mbar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:grid;grid-template-columns:1fr 1fr 1.35fr;gap:8px;padding:8px 10px calc(8px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--line)}
 .mbar a,.mbar button{height:54px;border-radius:var(--r);display:flex;align-items:center;justify-content:center;gap:8px;font:600 15px var(--head);border:1.5px solid var(--line);background:#fff;color:var(--text);text-decoration:none;cursor:pointer}
@@ -257,7 +297,7 @@ html.mo .pi:hover{transform:translateY(-3px)}
 <header class="nav">
   <div class="wrap">
     <a class="logo" href="#top"><img src="img/logo-light.svg" alt="Сонель" width="132" height="30"></a>
-    <nav class="links" aria-label="Разделы"><a href="#uchet">Что ведём</a><a href="#ceny">Цены</a><a href="#otvetstvennost">Ответственность</a><a href="#ofis">Офис</a></nav>
+    <nav class="links" aria-label="Разделы"><a href="#uslugi">Услуги</a><a href="#ceny">Цены</a><a href="#kak">Как работаем</a><a href="#rukovodstvo">Руководители</a><a href="#ofis">Офис</a></nav>
     <div class="r">
       <div class="msgr"><a href="https://t.me/+375291402025" aria-label="Написать в Telegram" title="Telegram" style="color:#229ED9"><svg><use href="#i-tg"/></svg></a><a href="viber://chat?number=%2B375291402025" aria-label="Написать в Viber" title="Viber" style="color:#7360F2"><svg><use href="#i-viber"/></svg></a><!-- TODO: подтвердить у клиента WhatsApp на этом номере --><a href="https://wa.me/375291402025" aria-label="Написать в WhatsApp" title="WhatsApp" style="color:#1FAF54"><svg><use href="#i-wa"/></svg></a></div>
       <a class="tel" href="tel:+375291402025">+375 29 140-20-25</a>
@@ -272,15 +312,25 @@ html.mo .pi:hover{transform:translateY(-3px)}
 <section class="hero">
   <div class="wrap">
     <div>
-      <h1 class="in">Бухгалтерия для ООО и&nbsp;ИП в&nbsp;Минске</h1>
-      <p class="lead in" style="--i:1">Ведём учёт с 2011 года. Если штраф начислят из-за нашей ошибки, возместим его по договору.</p>
+      <div class="seg in" role="tablist" aria-label="Ваша ситуация">
+        <button role="tab" aria-selected="true" data-seg="0">Уже работаете</button>
+        <button role="tab" aria-selected="false" data-seg="1">Открываете компанию</button>
+      </div>
+      <div class="segp" data-p="0">
+        <h1 class="in">Бухгалтерия для ООО и&nbsp;ИП в&nbsp;Минске</h1>
+        <p class="lead in" style="--i:1">Ведём учёт с 2011 года. Если штраф начислят из-за нашей ошибки, возместим его по договору.</p>
+      </div>
+      <div class="segp" data-p="1" hidden>
+        <p class="h1">Откроем компанию и&nbsp;поставим учёт с&nbsp;нуля</p>
+        <!-- TODO: подтвердить у клиента акцию «регистрация бесплатно при договоре» -->
+        <p class="lead">Регистрация бесплатно, если заключаете договор на бухгалтерское обслуживание. Систему налогообложения подберём до старта.</p>
+      </div>
       <div class="acts in" style="--i:2">
         <button class="btn btn-w" data-quiz>Узнать стоимость</button>
         <a class="btn btn-line" href="tel:+375291402025">Позвонить</a>
       </div>
     </div>
-    <!-- Ближайшие сроки считаются от сегодняшней даты.
-         TODO: сверить с бухгалтером клиента список сроков и формулировки -->
+    <!-- Ближайшие сроки считаются от сегодняшней даты -->
     <aside class="due in" style="--i:2" aria-label="Ближайшие налоговые сроки">
       <div class="h"><b>Ближайший срок</b><span id="due-today"></span></div>
       <div class="big"><span class="d" id="due-d">20</span><span class="m" id="due-m">ноября</span></div>
@@ -293,21 +343,28 @@ html.mo .pi:hover{transform:translateY(-3px)}
   </div>
 </section>
 
-<section class="rhythm" id="uchet">
+<section class="promo" aria-label="Акция">
   <div class="wrap">
-    <h2>Что входит в обслуживание</h2>
+    <p><b>Открытие компании бесплатно</b> при заключении договора на бухгалтерское обслуживание</p>
+    <button class="btn btn-i" data-quiz data-preset="new">Открыть компанию</button>
+  </div>
+</section>
+
+<section class="rhythm" id="uslugi">
+  <div class="wrap">
+    <h2>Что мы предлагаем</h2>
     <div class="rh">
       <div class="col">
-        <h3>Каждый месяц<small>пока вы работаете</small></h3>
-        <ul><li>Накладные, акты, платёжки</li><li>ЭСЧФ и НДС</li><li>Зарплата, отпускные, больничные</li><li>Расчёт и уплата налогов</li></ul>
+        <h3>Оперативное бухгалтерское обслуживание<small>полностью или по участкам</small></h3>
+        <ul><li>Накладные, акты, платёжки</li><li>Расчёт всех налогов, ЭСЧФ</li><li>Зарплата и отчётность</li><li>Отдельные участки учёта</li></ul>
       </div>
       <div class="col">
-        <h3>Каждый квартал и год<small>отчётность</small></h3>
-        <ul><li>Декларации в налоговую</li><li>Отчёты в ФСЗН и Белгосстрах</li><li>Статистика</li><li>Пересчёт: выгодна ли ваша система налогообложения</li></ul>
+        <h3>Профессиональный кадровый учёт<small>ведёт кадровик, а не бухгалтер</small></h3>
+        <ul><li>Приём и увольнение</li><li>Договоры подряда</li><li>Воинский учёт</li><li>Консультации по оформлению</li></ul>
       </div>
       <div class="col">
-        <h3>Когда понадобится<small>разовые задачи</small></h3>
-        <ul><li>Камеральные и плановые проверки</li><li>Документы на кредит, бизнес-план</li><li>Регистрация, реорганизация, ликвидация</li><li>Кадры и воинский учёт</li></ul>
+        <h3>Бесплатные консультации<small>для клиентов на обслуживании</small></h3>
+        <ul><li>Закреплённый бухгалтер на связи</li><li>Вопросы напрямую руководству</li><li>Выбор системы налогообложения</li><li>Регистрация и ликвидация</li></ul>
       </div>
     </div>
   </div>
@@ -328,25 +385,28 @@ html.mo .pi:hover{transform:translateY(-3px)}
   </div>
 </section>
 
-<section class="duty" id="otvetstvennost">
+<section class="how" id="kak">
   <div class="wrap">
-    <div>
-      <h2>Ответственность за ошибки</h2>
-      <!-- TODO: подтвердить у клиента сумму страхового покрытия -->
-      <p>Если из-за нашей ошибки налоговая начислит штраф или пеню, мы их возместим. Это прописано в договоре. Ответственность компании застрахована в Белгосстрахе.</p>
-      <p>С инспекторами налоговой и ФСЗН общаемся сами. Клиенты у нас из всех районов Минска, проверки проходили разные: камеральные, плановые, ликвидационные.</p>
+    <h2>Как мы работаем</h2>
+    <div class="hw">
+      <div class="hi"><h3>Не занимаем место в&nbsp;офисе</h3><p>Рабочее место, 1С и обучение бухгалтера на нашей стороне.</p></div>
+      <div class="hi"><h3>Не болеем и не уходим в&nbsp;отпуск</h3><p>Сотрудники подменяют друг друга, учёт не останавливается.</p></div>
+      <div class="hi"><h3>Решаем вопросы с&nbsp;налоговой и ФСЗН</h3><p>Звонки инспекторов берём на себя. Проходили камеральные, плановые и ликвидационные проверки.</p></div>
+      <div class="hi"><h3>Предлагаем решения</h3><p>Работаем с юристами, адвокатами, аудиторами, программистом 1С и банками.</p></div>
+      <div class="hi key" id="otvetstvennost"><h3>Берём на себя риски ошибок и штрафов</h3><p>Штрафы и пени по нашей вине возмещаем деньгами. Ответственность застрахована в Белгосстрахе.</p><!-- TODO: сумма страхового покрытия --></div>
+      <div class="hi"><h3>Опыт в финансах</h3><p>Готовим документы для кредитов в банках и пишем бизнес-планы.</p></div>
     </div>
   </div>
 </section>
 
-<section class="team" aria-labelledby="team-h">
+<section class="lead-s" id="rukovodstvo" aria-labelledby="lead-h">
   <div class="wrap">
-    <h2 id="team-h">Кто с вами работает</h2>
-    <!-- TODO: имена и стаж сотрудников от клиента -->
-    <div class="tg">
-      <div class="p"><h3>Закреплённый бухгалтер</h3><p>За вашей компанией закреплён один бухгалтер. Когда он в отпуске или на больничном, учёт ведёт коллега.</p></div>
-      <div class="p"><h3>Кадровик</h3><p>Кадры у нас ведёт отдельный специалист, а не бухгалтер. Раньше работал в военкомате.</p></div>
-      <div class="p"><h3>Главные бухгалтеры</h3><p>Руководители компании, стаж больше 20 лет. Клиенты могут звонить им с любым вопросом, бесплатно.</p></div>
+    <h2 id="lead-h">Руководители на связи</h2>
+    <p class="sub">Клиенты звонят им напрямую, когда вопрос сложнее обычного. Стаж главными бухгалтерами больше 20 лет.</p>
+    <!-- TODO: имена, должности, личные телефоны и почта руководителей от клиента -->
+    <div class="lg2">
+      <div class="person"><span class="ini" aria-hidden="true">ИФ</span><div><h3>Имя Фамилия</h3><p class="role">Учредитель, руководитель</p><a href="tel:+375291402025">+375 29 140-20-25</a><a href="mailto:sonel.buh@gmail.com">sonel.buh@gmail.com</a></div></div>
+      <div class="person"><span class="ini" aria-hidden="true">ИФ</span><div><h3>Имя Фамилия</h3><p class="role">Учредитель, главный бухгалтер</p><a href="tel:+375291402025">+375 29 140-20-25</a><a href="mailto:sonel.buh@gmail.com">sonel.buh@gmail.com</a></div></div>
     </div>
   </div>
 </section>
@@ -425,6 +485,8 @@ html.mo .pi:hover{transform:translateY(-3px)}
   <button class="p" data-quiz>Узнать цену</button>
 </nav>
 
+<button class="pill" data-quiz>Как не переплатить за бухобслуживание</button>
+
 <div class="ckb" id="ckb" role="region" aria-label="Cookie">
   <p>Сайт использует файлы cookie. Подробнее в <a href="cookie.html">Политике cookie</a>.</p>
   <div class="b"><button class="btn btn-i" data-ck="1">Принять</button><button class="btn btn-o" data-ck="0">Только необходимые</button></div>
@@ -465,6 +527,11 @@ html.mo .pi:hover{transform:translateY(-3px)}
   document.getElementById('due-list').innerHTML=ev.slice(1,4).map(function(e){return '<li><span>'+e.d.getDate()+' '+MON[e.d.getMonth()].slice(0,3)+'</span>'+e.t+'</li>'}).join('');
 
   }
+
+  // ---- переключатель «работаете / открываете» ----
+  var segs=document.querySelectorAll('[data-seg]'),panes=document.querySelectorAll('.segp'),mode=0;
+  function setSeg(n){mode=n;segs.forEach(function(b){b.setAttribute('aria-selected',+b.dataset.seg===n)});panes.forEach(function(p){p.hidden=+p.dataset.p!==n})}
+  segs.forEach(function(b){b.addEventListener('click',function(){setSeg(+b.dataset.seg)})});
 
   // ---- cookie ----
   var ck=document.getElementById('ckb'),v=null;
@@ -521,7 +588,7 @@ html.mo .pi:hover{transform:translateY(-3px)}
     }
     var back=body.querySelector('.qback');if(back)back.addEventListener('click',function(){step--;render()});
   }
-  function open(e){if(e)e.preventDefault();last=e&&e.currentTarget;step=0;render();qz.classList.add('open');document.body.style.overflow='hidden';var o=body.querySelector('.opt');if(o)o.focus()}
+  function open(e){if(e)e.preventDefault();last=e&&e.currentTarget;step=0;ans=[];if((last&&last.dataset.preset==='new')||mode===1){ans[0]='Только регистрирую';step=1}render();qz.classList.add('open');document.body.style.overflow='hidden';var o=body.querySelector('.opt');if(o)o.focus()}
   function close(){qz.classList.remove('open');document.body.style.overflow='';if(last)last.focus()}
   document.querySelectorAll('[data-quiz]').forEach(function(b){b.addEventListener('click',open)});
   document.getElementById('qx').addEventListener('click',close);
